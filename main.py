@@ -32,6 +32,25 @@ class Conta():
         self.cliente = cliente
         self.historico = historico
         
+    def saldo(self):
+        return self.saldo
+
+    def sacar (self, valor):
+        if valor > self.saldo
+            return False
+        else:
+            self.saldo -= valor
+            return True
+    
+    def depositar (self,valor):
+        if valor > 0:
+            self.saldo += valor
+            return True
+        else:
+            return False
+
+    @met
+    def nova_conta(cls)
 
         
         

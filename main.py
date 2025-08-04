@@ -3,14 +3,29 @@ from datetime import date
 
 #Cliente
 class cliente:    
-    def endereco(self, endereco):
+    def __init__(self, endereco):
         self.endereco = endereco
         self.contaconta = []
     
     def adicionarconta(self,conta):
         self.conta.append(conta)
     
-    def 
+    def realizar_transação(self,conta,transacao):
+        transacao.registrar(conta)
+        conta.historico.adicionar_transacao(transacao)
+        
+
+#pessoa física
+class Pessoafisica():
+    def nome (self,nome,cpf,data_nascimento,endereco):
+        super().__init__(endereco)
+        self.nome = nome
+        self.cpf = cpf
+        self.data_nascimento = data_nascimento
+
+
+    
+        
 
         
         

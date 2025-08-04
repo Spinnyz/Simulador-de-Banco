@@ -15,7 +15,7 @@ class cliente:
         conta.historico.adicionar_transacao(transacao)
         
 
-#pessoa física
+#Pessoa física
 class Pessoafisica():
     def nome (self,nome,cpf,data_nascimento,endereco):
         super().__init__(endereco)
@@ -23,8 +23,14 @@ class Pessoafisica():
         self.cpf = cpf
         self.data_nascimento = data_nascimento
 
-
-    
+#Conta
+class Conta():
+    def __init__(self,saldo,numero,agencia,cliente,historico):
+        self.saldo = 0.0
+        self.numero = numero
+        self.agencia = agencia
+        self.cliente = cliente
+        self.historico = historico
         
 
         

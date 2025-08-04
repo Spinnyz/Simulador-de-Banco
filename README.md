@@ -1,2 +1,2 @@
 # Simulador-de-Banco
-Simulador de Banco feito para o Bootcamp Santander
+Modelando um Sistema Bancário em python  

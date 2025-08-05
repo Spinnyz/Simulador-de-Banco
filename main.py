@@ -1,58 +1,58 @@
-
 from datetime import date
 
-#Cliente
-class cliente:    
+# Classe Historico
+class Historico:
+    def __init__(self):
+        self.transacoes = []
+
+    def adicionar_transacao(self, transacao):
+        self.transacoes.append(transacao)
+
+# Cliente
+class Cliente:
     def __init__(self, endereco):
         self.endereco = endereco
-        self.contaconta = []
-    
-    def adicionarconta(self,conta):
-        self.conta.append(conta)
-    
-    def realizar_transação(self,conta,transacao):
+        self.contas = []
+
+    def adicionar_conta(self, conta):
+        self.contas.append(conta)
+
+    def realizar_transacao(self, conta, transacao):
         transacao.registrar(conta)
         conta.historico.adicionar_transacao(transacao)
-        
 
-#Pessoa física
-class Pessoafisica():
-    def __init__ (self,_nome,_cpf,_data_nascimento):
-        self._nome = _nome
-        self._cpf = _cpf
-        self._data_nascimento = _data_nascimento
+# Pessoa Física
+class PessoaFisica(Cliente):
+    def __init__(self, nome, cpf, data_nascimento, endereco):
+        super().__init__(endereco)
+        self.nome = nome
+        self.cpf = cpf
+        self.data_nascimento = data_nascimento
 
-#Conta
-class Conta():
-    def __init__(self,saldo,numero,agencia,cliente,historico):
+# Conta
+class Conta:
+    def __init__(self, cliente, numero, agencia='0001'):
         self.saldo = 0.0
         self.numero = numero
         self.agencia = agencia
         self.cliente = cliente
-        self.historico = historico
-        
-    def saldo(self):
+        self.historico = Historico()
+
+    def saldo_atual(self):
         return self.saldo
 
-    def sacar (self, valor):
-        if valor > self.saldo
+    def sacar(self, valor):
+        if valor > self.saldo:
             return False
-        else:
-            self.saldo -= valor
-            return True
-    
-    def depositar (self,valor):
+        self.saldo -= valor
+        return True
+
+    def depositar(self, valor):
         if valor > 0:
             self.saldo += valor
             return True
-        else:
-            return False
+        return False
 
     @classmethod
-    def nova_conta(cls,cliente,numero):
-        return cls(cliente,numero)
-
-
-        
-        
-    
+    def nova_conta(cls, cliente, numero):
+        return cls(cliente, numero)

@@ -17,11 +17,10 @@ class cliente:
 
 #Pessoa física
 class Pessoafisica():
-    def nome (self,nome,cpf,data_nascimento,endereco):
-        super().__init__(endereco)
-        self.nome = nome
-        self.cpf = cpf
-        self.data_nascimento = data_nascimento
+    def __init__ (self,_nome,_cpf,_data_nascimento):
+        self._nome = _nome
+        self._cpf = _cpf
+        self._data_nascimento = _data_nascimento
 
 #Conta
 class Conta():
@@ -49,8 +48,10 @@ class Conta():
         else:
             return False
 
-    @met
-    def nova_conta(cls)
+    @classmethod
+    def nova_conta(cls,cliente,numero):
+        return cls(cliente,numero)
+
 
         
         

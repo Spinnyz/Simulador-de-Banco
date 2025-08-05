@@ -85,10 +85,10 @@ class Saque (transacao):
 
 class Contacorrente(conta):
     def __init__ (self, limite_saque = 3, limite = 500.00):
+        super().__init__(cliente, numero)
         self.limite_saque = limite_saque
         self.limite = limite
         self.saques_realizados = 0
-        super().__init__(cliente, numero)
 
     def Cacar (self,valor):
         if self.saques_realizados < self.limite_saque:

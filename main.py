@@ -1,4 +1,6 @@
 from datetime import date
+from abc import ABC, abstractmethod
+
 
 # Classe Historico
 class Historico:
@@ -56,3 +58,24 @@ class Conta:
     @classmethod
     def nova_conta(cls, cliente, numero):
         return cls(cliente, numero)
+
+class Transacao(ABC):
+    @abstractmethod
+    def registrar(self, conta):
+        pass
+
+
+class Deposito (transacao):
+    def __init__ (self,valor):
+        self.valor = valor
+    
+    def registrar(self, conta):
+        return conta.depositar(self.valor)
+    
+class Saque (transacao):
+    def __init__(self,valor):
+        self.valor = valor
+    
+    def registrar(self, conta):
+        return conta.sacar(self.valor)
+    

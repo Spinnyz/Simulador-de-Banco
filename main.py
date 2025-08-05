@@ -59,6 +59,8 @@ class Conta:
     def nova_conta(cls, cliente, numero):
         return cls(cliente, numero)
 
+
+#interfase (transação)
 class Transacao(ABC):
     @abstractmethod
     def registrar(self, conta):
@@ -78,4 +80,11 @@ class Saque (transacao):
     
     def registrar(self, conta):
         return conta.sacar(self.valor)
-    
+
+#Conta Corrente
+
+class Contacorrente(conta):
+    def __init_ (self, limite_saque, limite):
+        self.limite_saque = 3
+        self.limite = 500.00
+        self.saques_realizados = 0

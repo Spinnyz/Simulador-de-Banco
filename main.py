@@ -67,14 +67,14 @@ class Transacao(ABC):
         pass
 
 
-class Deposito (transacao):
+class Deposito (Transacao):
     def __init__ (self,valor):
         self.valor = valor
     
     def registrar(self, conta):
         return conta.depositar(self.valor)
     
-class Saque (transacao):
+class Saque (Transacao):
     def __init__(self,valor):
         self.valor = valor
     
@@ -83,21 +83,26 @@ class Saque (transacao):
 
 #Conta Corrente
 
-class Contacorrente(conta):
-    def __init__ (self, limite_saque = 3, limite = 500.00):
+class Contacorrente(Conta):
+    def __init__ (self, cliente, numero, limite_saque = 3, limite = 500.00):
         super().__init__(cliente, numero)
         self.limite_saque = limite_saque
         self.limite = limite
         self.saques_realizados = 0
 
-    def Cacar (self,valor):
-        if self.saques_realizados < self.limite_saque:
-            print ("Limite de saque atingidos")
-        if valor > limite_saque:
-            print ("Saque acima do limite")
-        
+    def sacar(self, valor):
+        if self.saques_realizados >= self.limite_saques:
+            print("Limite de saques atingido")
+            return False
+
+        if valor > self.limite:
+            print("Valor excede o limite por saque")
+            return False
+
         feito = super().sacar(valor)
         if feito:
             self.saques_realizados += 1
         return feito
+
     
+
